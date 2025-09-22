@@ -1,0 +1,25 @@
+﻿/* Navbar with subtle gray gradient */
+.navbar.custom-navbar {
+    background: linear-gradient(90deg, #dee2e6, #ced4da) !important;
+    margin: 0 !important;
+    padding: 0 20px !important;
+    border: none !important;
+    border-bottom: none !important;
+    box-shadow: none !important;
+}
+
+/* Brand nudged inward */
+.brand-wrapper {
+    margin-left: 60px; /* adjust for centering preference */
+}
+
+/* Nav links */
+.navbar .nav-link {
+    color: #333 !important;
+    font-weight: 500;
+    transition: color 0.2s ease;
+}
+
+    .navbar .nav-link:hover {
+        color: #000 !important;
+    }

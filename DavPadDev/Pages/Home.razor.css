@@ -1,0 +1,101 @@
+﻿/* ===== Global resets ===== */
+html, body {
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+}
+
+/* ===== Banner ===== */
+.banner {
+    width: 100vw;
+    margin-left: calc(-50vw + 50%);
+    margin-right: calc(-50vw + 50%);
+    margin-top: -1px; /* kill navbar gap */
+    padding: 20px 0;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(90deg, #e66465, #f6b73c);
+    color: #fff;
+    text-align: center;
+    opacity: 0;
+    animation: fadeIn 1.2s ease-out forwards;
+    /* Subtle shadow under banner */
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+.banner-title {
+    font-size: 3rem;
+    font-weight: bold;
+    margin: 0;
+}
+
+.banner-subtitle {
+    font-size: 1.2rem;
+    margin: 5px 0 0 0;
+    letter-spacing: 2px;
+}
+
+.banner-title:focus,
+.banner-subtitle:focus {
+        outline: none !important;
+        box-shadow: none !important;
+    }
+
+.banner-title:focus,
+.banner-subtitle:focus {
+        outline: none !important;
+        box-shadow: none !important;
+    }
+
+.banner-title,
+.banner-subtitle {
+    pointer-events: none; /* prevents accidental focus */
+}
+
+
+
+
+/* ===== Hero section ===== */
+.hero {
+    text-align: center;
+    padding: 30px 20px;
+    margin-top: 0;
+}
+
+.hero-title {
+    opacity: 0;
+    animation: fadeIn 1s ease-out forwards;
+    animation-delay: 1.3s;
+}
+
+.tagline {
+    font-size: 1.25rem;
+    margin-bottom: 25px;
+    color: #555;
+    opacity: 0;
+    animation: fadeIn 1s ease-out forwards;
+    animation-delay: 1.6s;
+}
+
+.hero-btn {
+    padding: 12px 30px;
+    font-size: 1.1rem;
+    opacity: 0;
+    animation: fadeIn 1s ease-out forwards;
+    animation-delay: 1.9s;
+}
+
+/* Remove focus outline on button */
+.btn:focus {
+    box-shadow: none !important;
+}
+
+/* ===== Animations ===== */
+@keyframes fadeIn {
+    to {
+        opacity: 1;
+    }
+}

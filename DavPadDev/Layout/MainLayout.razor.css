@@ -1,0 +1,23 @@
+﻿/* Full-height layout wrapper */
+.layout-wrapper {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh; /* fills entire viewport */
+}
+
+/* Main content grows to push footer down */
+.main-layout {
+    flex: 1;
+    margin: 0 !important;
+    padding: 0 !important; /* <-- remove top padding */
+}
+
+/* Footer always sticks at bottom */
+.site-footer {
+    background: linear-gradient(90deg, #dee2e6, #ced4da);
+    text-align: center;
+    padding: 15px;
+    font-size: 0.9rem;
+    color: #555;
+    box-shadow: 0 -2px 4px rgba(0,0,0,0.05);
+}

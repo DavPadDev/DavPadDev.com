@@ -1,0 +1,16 @@
+﻿@inherits LayoutComponentBase
+
+<div class="layout-wrapper">
+    <!-- Navbar -->
+    <NavMenu />
+
+    <!-- Page content -->
+    <main class="main-layout">
+        @Body
+    </main>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+        <p>&copy; @DateTime.Now.Year DavPadDev. All rights reserved.</p>
+    </footer>
+</div>

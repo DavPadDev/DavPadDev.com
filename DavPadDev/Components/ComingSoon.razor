@@ -1,0 +1,9 @@
+﻿<section class="coming-soon">
+    <h2>🚧 @PageName Coming Soon 🚧</h2>
+    <p>@Message</p>
+</section>
+
+@code {
+    [Parameter] public string PageName { get; set; } = "This page";
+    [Parameter] public string Message { get; set; } = "We’re actively building this section. Please check back soon for updates!";
+}

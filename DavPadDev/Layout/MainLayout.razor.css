@@ -2,9 +2,10 @@
 .layout-wrapper {
     display: flex;
     flex-direction: column;
-    min-height: 100vh; /* fills entire viewport */
+    min-height: 100vh;
 }
 
+/* Hero banner */
 .layout-hero-image {
     position: relative;
     width: 100%;
@@ -12,27 +13,36 @@
     margin: 1rem 0;
 }
 
-.layout-hero-image img {
-    display: block;
-    max-height: 120px; /* keeps it from blowing up too tall */
-    margin: 0 auto; /* centers horizontally */
-}
+    .layout-hero-image img {
+        display: block;
+        max-height: 120px;
+        margin: 0 auto;
+    }
 
-
-
-/* Main content grows to push footer down */
+/* Main content gets padding so footer doesn't overlap */
 .main-layout {
     flex: 1;
     margin: 0 !important;
-    padding: 0 !important; /* <-- remove top padding */
+    padding: 0 0 60px 0 !important; /* bottom padding = footer height */
+    display: flex;
+    flex-direction: column;
 }
 
-/* Footer always sticks at bottom */
+/* Sticky footer (thin status bar) */
 .site-footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
     background: linear-gradient(90deg, #dee2e6, #ced4da);
     text-align: center;
-    padding: 15px;
-    font-size: 0.9rem;
-    color: #555;
-    box-shadow: 0 -2px 4px rgba(0,0,0,0.05);
+    padding: 6px 10px; /* slim padding */
+    font-size: 0.75rem; /* small text */
+    color: #444;
+    box-shadow: 0 -1px 3px rgba(0,0,0,0.08); /* subtle shadow */
+    z-index: 1030;
 }
+
+    .site-footer p {
+        margin: 0;
+    }

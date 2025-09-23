@@ -1,0 +1,43 @@
+﻿@inject DavPadDev.Services.ModalService ModalService
+
+@if (ModalService.Show)
+{
+    <div class="modal-overlay">
+        <div class="modal-box">
+            <h2>@ModalService.Title</h2>
+            <p>@((MarkupString)ModalService.Message)</p>
+
+            @if (!string.IsNullOrWhiteSpace(ModalService.Note))
+            {
+                <small>@((MarkupString)ModalService.Note)</small>
+            }
+
+            <div class="modal-buttons">
+                @foreach (var button in ModalService.Buttons)
+                {
+                    <button class="@button.CssClass" @onclick="() => HandleClick(button)">
+                        @button.Text
+                    </button>
+                }
+            </div>
+        </div>
+    </div>
+}
+
+@code {
+    protected override void OnInitialized()
+    {
+        ModalService.OnChange += StateHasChanged;
+    }
+
+    public void Dispose()
+    {
+        ModalService.OnChange -= StateHasChanged;
+    }
+
+    private void HandleClick(DavPadDev.Services.ModalButton button)
+    {
+        button.OnClick?.Invoke();
+        ModalService.CloseModal();
+    }
+}

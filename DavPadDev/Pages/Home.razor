@@ -1,16 +1,50 @@
 ﻿@page "/"
 
-<!-- Banner (homepage only) -->
-<div class="banner">
-    <h1 class="banner-title">Sorry this site is currently under construction</h1>
-    <p class="banner-subtitle">David Padilla Development</p>
-</div>
+<div class="home-container">
 
-<!-- Hero section -->
-<section class="hero">
-    <div class="hero-content">
-        <h2 class="hero-title">Hi, I'm David Padilla</h2>
-        <p class="tagline">.NET Developer | Building clean, modern solutions</p>
-        <a class="btn btn-primary btn-lg hero-btn" href="/projects">View My Work</a>
-    </div>
-</section>
+    <!-- Hero / Banner -->
+    <section class="hero fade-in delay-0">
+        <h1>Welcome to my Portfolio</h1>
+        <p>Building modern web solutions with .NET and Blazor.</p>
+    </section>
+
+    <!-- About Blurb -->
+    <section class="about-preview fade-in delay-1">
+        <h2>About Me</h2>
+        <p>
+            I'm a passionate developer with experience in building web apps,
+            cloud solutions, and creative projects.
+            <a href="/about">Read more →</a>
+        </p>
+    </section>
+
+    <!-- Projects Preview -->
+    <section class="projects-preview fade-in delay-2">
+        <h2>Highlighted Projects</h2>
+        <div class="projects-grid">
+            <div class="project-card">
+                <h3>Project One</h3>
+                <p>Brief description of your first project. Keep it short and enticing.</p>
+                <a href="/projects">View Project →</a>
+            </div>
+            <div class="project-card">
+                <h3>Project Two</h3>
+                <p>Brief description of your second project. Highlight impact or tech used.</p>
+                <a href="/projects">View Project →</a>
+            </div>
+        </div>
+        <div class="projects-link">
+            <a class="btn" href="/projects">See All Projects</a>
+        </div>
+    </section>
+
+    <!-- Call-to-Action -->
+    <section class="cta fade-in delay-3">
+        <h2>Let’s Work Together</h2>
+        <p>Interested in collaborating or learning more?</p>
+        <div class="cta-buttons">
+            <a class="btn" href="/resume">View Resume</a>
+            <a class="btn secondary" href="/contact">Contact Me</a>
+        </div>
+    </section>
+</div>

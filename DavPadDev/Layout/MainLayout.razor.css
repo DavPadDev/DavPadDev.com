@@ -5,6 +5,21 @@
     min-height: 100vh; /* fills entire viewport */
 }
 
+.layout-hero-image {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+    margin: 1rem 0;
+}
+
+.layout-hero-image img {
+    display: block;
+    max-height: 120px; /* keeps it from blowing up too tall */
+    margin: 0 auto; /* centers horizontally */
+}
+
+
+
 /* Main content grows to push footer down */
 .main-layout {
     flex: 1;

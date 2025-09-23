@@ -1,6 +1,17 @@
 ﻿@inherits LayoutComponentBase
+@inject DavPadDev.Services.ModalService ModalService
+@using DavPadDev.Services
+
 
 <div class="layout-wrapper">
+    <!-- Modal (always present, controlled by service) -->
+    <Modal />
+
+    <!-- Global Hero Banner -->
+    <section class="layout-hero-image">
+        <img src="images/default-monochrome-black.svg" alt="Site banner" />
+    </section>
+
     <!-- Navbar -->
     <NavMenu />
 
@@ -14,3 +25,19 @@
         <p>&copy; @DateTime.Now.Year DavPadDev. All rights reserved.</p>
     </footer>
 </div>
+
+@code {
+    protected override void OnAfterRender(bool firstRender)
+    {
+        if (firstRender)
+        {
+            ModalService.ShowModal(
+                "🚧 Portfolio Under Construction 🚧",
+                "This site is a work in progress — feel free to look around and check back for updates!",
+                "(Thanks for your patience — I’m building this from scratch as a full <b>.NET Blazor WebAssembly app</b>. Even this notification is its own <b>component + service</b> wired with dependency injection. Every click, fade-in, and sticky navbar you see was handcrafted without templates 🛠️)",
+                new ModalButton("Got it", () => { })
+            );
+        }
+    }
+}
+

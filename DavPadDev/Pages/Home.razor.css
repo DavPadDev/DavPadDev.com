@@ -57,6 +57,25 @@ section {
     margin-top: 2rem;
 }
 
+/* Project card links */
+.project-links {
+    display: flex;
+    gap: 1rem;
+    margin-top: 0.75rem;
+    flex-wrap: wrap;
+}
+
+    .project-links a {
+        font-weight: 600;
+        text-decoration: none;
+        color: #0078d4;
+    }
+
+        .project-links a:hover {
+            text-decoration: underline;
+        }
+
+
 /* CTA Section */
 .cta h2 {
     margin-bottom: 0.5rem;
@@ -139,3 +158,15 @@ section {
     outline-offset: 4px;
 }
 
+.project-image {
+    width: 100%;
+    border-radius: 8px;
+    margin-bottom: 1rem;
+    object-fit: cover;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.3);
+    transition: transform 0.2s ease;
+}
+
+    .project-image:hover {
+        transform: scale(1.02);
+    }

@@ -1,4 +1,5 @@
-﻿@inject DavPadDev.Services.ModalService ModalService
+﻿@using DavPadDev.Client.Services
+@inject ModalService ModalService
 
 @if (ModalService.Show)
 {
@@ -35,7 +36,7 @@
         ModalService.OnChange -= StateHasChanged;
     }
 
-    private void HandleClick(DavPadDev.Services.ModalButton button)
+    private void HandleClick(ModalButton button)
     {
         button.OnClick?.Invoke();
         ModalService.CloseModal();

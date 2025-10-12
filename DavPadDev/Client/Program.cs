@@ -1,7 +1,7 @@
 using DavPadDev;
 using Microsoft.AspNetCore.Components.Web;
 using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
-using DavPadDev.Services;
+using DavPadDev.Client.Services;
 
 
 var builder = WebAssemblyHostBuilder.CreateDefault(args);

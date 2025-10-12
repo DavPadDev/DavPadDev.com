@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace DavPadDev.Services
+namespace DavPadDev.Client.Services
 {
     public class ModalService
     {

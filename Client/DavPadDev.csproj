@@ -7,11 +7,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Content Include="Client\wwwroot\css\app.css" />
-    <Content Include="Client\wwwroot\icon-192.png" />
-    <Content Include="Client\wwwroot\images\default-monochrome-black.svg" />
-    <Content Include="Client\wwwroot\images\githubscreenshot.png" />
-    <Content Include="Client\wwwroot\index.html" />
+	  <!-- No Content Include lines needed for Blazor WASM -->
   </ItemGroup>
 
   <ItemGroup>

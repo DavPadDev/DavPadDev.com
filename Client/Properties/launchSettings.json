@@ -1,0 +1,12 @@
+{
+  "profiles": {
+    "DavPadDev": {
+      "commandName": "Project",
+      "launchBrowser": true,
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Development"
+      },
+      "applicationUrl": "https://localhost:53729;http://localhost:53730"
+    }
+  }
+}

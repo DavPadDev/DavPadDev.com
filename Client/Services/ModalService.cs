@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace DavPadDev.Client.Services
+namespace DavPadDev.Services
 {
     public class ModalService
     {
@@ -12,7 +12,7 @@ namespace DavPadDev.Client.Services
 
         public bool Show { get; private set; }
 
-        public event Action OnChange;
+        public event Action? OnChange;
 
         public void ShowModal(string title, string message, string note = "", params ModalButton[] buttons)
         {

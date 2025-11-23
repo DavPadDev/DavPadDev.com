@@ -25,7 +25,7 @@ jobs:
         with:
           dotnet-version: '8.0.x'
 
-      # Build/publish Blazor WASM yourself into a predictable folder
+      # Publish Blazor WASM into Client/publish/wwwroot
       - name: Publish Blazor app
         run: dotnet publish DavPadDev.csproj -c Release -o publish
         working-directory: Client
@@ -38,14 +38,15 @@ jobs:
           repo_token: ${{ secrets.GITHUB_TOKEN }}
           action: "upload"
 
+          # Where the source is (still useful for later /api)
           app_location: "Client"
           api_location: "api"
 
-          # IMPORTANT: tell SWA not to run Oryx build
+          # IMPORTANT: we're providing prebuilt artifacts
           skip_app_build: true
 
-          # Upload what YOU published above
-          output_location: "publish/wwwroot"
+          # Tell SWA where index.html actually is
+          app_artifact_location: "Client/publish/wwwroot"
 
   close_pull_request_job:
     if: github.event_name == 'pull_request' && github.event.action == 'closed'

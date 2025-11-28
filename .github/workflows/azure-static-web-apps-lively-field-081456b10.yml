@@ -16,42 +16,43 @@ jobs:
     name: Build and Deploy Job
 
     steps:
-      - uses: actions/checkout@v3
+      - name: Checkout
+        uses: actions/checkout@v3
         with:
           submodules: true
           lfs: false
 
-      - name: Setup .NET
-        uses: actions/setup-dotnet@v4
-        with:
-          dotnet-version: '8.0.x'
-
-      # Publish Blazor WASM to Client/publish/wwwroot
-      - name: Publish Blazor WASM
-        run: dotnet publish DavPadDev.csproj -c Release -o publish
-        working-directory: Client
-
-      - name: Deploy
+      - name: Build and Deploy App and API
+        id: builddeploy
         uses: Azure/static-web-apps-deploy@v1
         with:
+          # This token is created by Azure Static Web Apps when you set up GitHub integration.
+          # Keep the name exactly as Azure gave you in the portal.
           azure_static_web_apps_api_token: ${{ secrets.AZURE_STATIC_WEB_APPS_API_TOKEN_LIVELY_FIELD_081456B10 }}
+
+          # Used for GitHub integrations (i.e. PR comments)
           repo_token: ${{ secrets.GITHUB_TOKEN }}
+
+          # Always "upload" for main CI/CD
           action: "upload"
 
-          # IMPORTANT: app_location must point to the folder with index.html
-          app_location: "Client/publish/wwwroot"
+          # Path to your Blazor WebAssembly app project
+          # (this is the folder containing DavPadDev.csproj for the client)
+          app_location: "Client"
 
-          # Don't let Oryx rebuild
-          skip_app_build: true
+          # Path to your Azure Functions project (the contact API)
+          api_location: "api"
 
-          # No API yet
-          api_location: ""
-          skip_api_build: true
+          # Output folder for the built Blazor app, relative to app_location.
+          # When Oryx runs "dotnet publish" on the Client project, it will look
+          # for the static site files in "wwwroot".
+          output_location: "wwwroot"
 
   close_pull_request_job:
     if: github.event_name == 'pull_request' && github.event.action == 'closed'
     runs-on: ubuntu-latest
     name: Close Pull Request Job
+
     steps:
       - name: Close Pull Request
         id: closepullrequest

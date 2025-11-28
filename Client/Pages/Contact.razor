@@ -1,4 +1,95 @@
 ﻿@page "/contact"
+@using DavPadDev.Models
+@inject HttpClient Http
 
-<ComingSoon PageName="Contact"
-            Message="I’m setting up my contact form — in the meantime, feel free to reach out via LinkedIn or email." />
+<h1>Contact</h1>
+
+<p>
+    Want to reach out? Send a message here and it will go straight to the inbox.
+</p>
+
+<EditForm Model="_form" OnValidSubmit="HandleValidSubmit">
+    <DataAnnotationsValidator />
+    <ValidationSummary />
+
+    <div class="form-grid">
+
+        <div class="form-field">
+            <label>Name</label>
+            <InputText class="input" @bind-Value="_form.Name" />
+            <ValidationMessage For="@(() => _form.Name)" />
+        </div>
+
+        <div class="form-field">
+            <label>Email</label>
+            <InputText class="input" @bind-Value="_form.Email" />
+            <ValidationMessage For="@(() => _form.Email)" />
+        </div>
+
+        <div class="form-field">
+            <label>Message</label>
+            <InputTextArea class="input textarea" rows="6" @bind-Value="_form.Message" />
+            <ValidationMessage For="@(() => _form.Message)" />
+        </div>
+
+        <button type="submit" class="btn" disabled="@_isSubmitting">
+            @(_isSubmitting ? "Sending..." : "Send Message")
+        </button>
+
+
+    </div>
+</EditForm>
+
+@if (_status is not null)
+{
+    <div class="status @(_status.Success ? "success" : "error")">
+        @_status.Message
+    </div>
+}
+
+@code {
+    private ContactFormModel _form = new();
+    private bool _isSubmitting = false;
+    private StatusMessage? _status;
+
+    private async Task HandleValidSubmit()
+    {
+        _isSubmitting = true;
+        _status = null;
+
+        try
+        {
+#if DEBUG
+        var apiUrl = "http://localhost:7071/api/contact";
+#else
+            var apiUrl = "/api/contact";
+#endif
+
+            var response = await Http.PostAsJsonAsync(apiUrl, _form);
+
+
+            if (response.IsSuccessStatusCode)
+            {
+                _status = new StatusMessage(true, "Message sent! Thanks for reaching out.");
+                _form = new ContactFormModel(); // clear form
+            }
+            else
+            {
+                // Read the API error JSON even on 400
+                var apiError = await response.Content.ReadFromJsonAsync<ApiResult>();
+                _status = new StatusMessage(false, apiError?.Error ?? "Something went wrong.");
+            }
+        }
+        catch
+        {
+            _status = new StatusMessage(false, "Network error. Try again in a bit.");
+        }
+        finally
+        {
+            _isSubmitting = false;
+        }
+    }
+
+    private record ApiResult(bool Success, string? Error);
+    private record StatusMessage(bool Success, string Message);
+}

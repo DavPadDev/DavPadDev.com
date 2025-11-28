@@ -126,4 +126,59 @@ code {
     }
 }
 
+.form-grid {
+    display: grid;
+    gap: 1rem;
+    max-width: 600px;
+}
+
+.form-field {
+    display: grid;
+    gap: 0.35rem;
+}
+
+.input {
+    padding: 0.6rem 0.75rem;
+    border-radius: 8px;
+    border: 1px solid #444;
+    background: #111;
+    color: #eee;
+}
+
+.textarea {
+    resize: vertical;
+}
+
+.btn {
+    width: fit-content;
+    padding: 0.6rem 1rem;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+    background: #2d7dff;
+    color: white;
+    font-weight: 600;
+}
+
+    .btn:disabled {
+        opacity: 0.6;
+        cursor: not-allowed;
+    }
+
+.status {
+    margin-top: 1rem;
+    padding: 0.75rem 1rem;
+    border-radius: 8px;
+    max-width: 600px;
+}
+
+    .status.success {
+        background: #143d1f;
+        border: 1px solid #2fa04b;
+    }
+
+    .status.error {
+        background: #3d1414;
+        border: 1px solid #a02f2f;
+    }
 

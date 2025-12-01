@@ -1,0 +1,147 @@
+﻿/* Layout wrapper */
+.contact-page {
+    display: flex;
+    justify-content: center;
+    padding: 3rem 1rem 4rem;
+}
+
+/* Card container */
+.contact-card {
+    width: 100%;
+    max-width: 640px;
+    background: #f5f7fa;
+    border-radius: 12px;
+    padding: 2rem 2.5rem;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+}
+
+/* Headings & intro */
+.contact-title {
+    font-size: 2.1rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+}
+
+.contact-intro {
+    margin-bottom: 1.5rem;
+    color: #555;
+}
+
+/* Form layout */
+.contact-form {
+    margin-top: 0.5rem;
+}
+
+.form-grid {
+    display: grid;
+    gap: 1rem;
+}
+
+.form-field {
+    display: grid;
+    gap: 0.35rem;
+}
+
+    /* Labels */
+    .form-field label {
+        font-size: 0.95rem;
+        font-weight: 600;
+    }
+
+/* Inputs */
+.input {
+    padding: 0.6rem 0.75rem;
+    border-radius: 8px;
+    border: 1px solid #c7ccd5;
+    background: #fff;
+    color: #111;
+    font-size: 0.95rem;
+    transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+    .input:focus {
+        outline: none;
+        border-color: #2d7dff;
+        box-shadow: 0 0 0 3px rgba(45, 125, 255, 0.16);
+    }
+
+.textarea {
+    resize: vertical;
+    min-height: 6rem;
+}
+
+/* Submit button */
+.btn {
+    width: fit-content;
+    margin-top: 0.25rem;
+    padding: 0.6rem 1.2rem;
+    border-radius: 999px;
+    border: none;
+    cursor: pointer;
+    background: #2d7dff;
+    color: #fff;
+    font-weight: 600;
+    font-size: 0.96rem;
+    letter-spacing: 0.02em;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    transition: background 0.15s ease, transform 0.05s ease;
+}
+
+    .btn:hover:not(:disabled) {
+        background: #1f63d4;
+        transform: translateY(-1px);
+    }
+
+    .btn:active:not(:disabled) {
+        transform: translateY(0);
+    }
+
+    .btn:disabled {
+        opacity: 0.6;
+        cursor: not-allowed;
+    }
+
+/* Status messages */
+.status {
+    margin-top: 1.25rem;
+    padding: 0.75rem 1rem;
+    border-radius: 8px;
+    font-size: 0.95rem;
+}
+
+    .status.success {
+        background: #e5f7ea;
+        border: 1px solid #2fa04b;
+        color: #174824;
+    }
+
+    .status.error {
+        background: #fbe9e9;
+        border: 1px solid #a02f2f;
+        color: #5a1515;
+    }
+
+/* Honeypot: fully hidden but still in DOM for bots */
+.hpot {
+    display: none !important;
+    visibility: hidden !important;
+    height: 0 !important;
+    width: 0 !important;
+    opacity: 0 !important;
+    pointer-events: none !important;
+    position: absolute !important;
+    left: -9999px !important;
+}
+
+/* Small screens */
+@media (max-width: 600px) {
+    .contact-card {
+        padding: 1.5rem 1.25rem;
+    }
+
+    .contact-title {
+        font-size: 1.8rem;
+    }
+}

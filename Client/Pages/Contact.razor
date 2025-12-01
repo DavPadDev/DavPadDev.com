@@ -2,59 +2,72 @@
 @using DavPadDev.Models
 @inject HttpClient Http
 
-<h1>Contact</h1>
+<div class="contact-page">
+    <section class="contact-card">
+        <h1 class="contact-title">Get in touch</h1>
 
-<p>
-    Want to reach out? Send a message here and it will go straight to the inbox.
-</p>
+        <p class="contact-intro">
+            Want to reach out? Send a message here and it will go straight to the inbox.
+        </p>
 
-<EditForm Model="_form" OnValidSubmit="HandleValidSubmit">
-    <DataAnnotationsValidator />
-    <ValidationSummary />
+        <EditForm Model="_form" OnValidSubmit="HandleValidSubmit" class="contact-form">
+            <DataAnnotationsValidator />
+            <ValidationSummary />
 
-    <!-- 🔒 HONEYPOT FIELD (invisible anti-spam) -->
-    <input autocomplete="off" class="hpot" @bind="_honeypot" />
+            <!-- 🔒 Honeypot (hidden by CSS, used only for bots) -->
+            <input autocomplete="off" class="hpot" @bind="_honeypot" />
 
-    <div class="form-grid">
+            <div class="form-grid">
 
-        <div class="form-field">
-            <label>Name</label>
-            <InputText class="input" @bind-Value="_form.Name" />
-            <ValidationMessage For="@(() => _form.Name)" />
-        </div>
+                <div class="form-field">
+                    <label for="name-input">Name</label>
+                    <InputText id="name-input"
+                               class="input"
+                               @bind-Value="_form.Name" />
+                    <ValidationMessage For="@(() => _form.Name)" />
+                </div>
 
-        <div class="form-field">
-            <label>Email</label>
-            <InputText class="input" @bind-Value="_form.Email" />
-            <ValidationMessage For="@(() => _form.Email)" />
-        </div>
+                <div class="form-field">
+                    <label for="email-input">Email</label>
+                    <InputText id="email-input"
+                               class="input"
+                               @bind-Value="_form.Email" />
+                    <ValidationMessage For="@(() => _form.Email)" />
+                </div>
 
-        <div class="form-field">
-            <label>Message</label>
-            <InputTextArea class="input textarea" rows="6" @bind-Value="_form.Message" />
-            <ValidationMessage For="@(() => _form.Message)" />
-        </div>
+                <div class="form-field">
+                    <label for="message-input">Message</label>
+                    <InputTextArea id="message-input"
+                                   class="input textarea"
+                                   rows="6"
+                                   @bind-Value="_form.Message" />
+                    <ValidationMessage For="@(() => _form.Message)" />
+                </div>
 
-        <button type="submit" class="btn" disabled="@_isSubmitting">
-            @(_isSubmitting ? "Sending..." : "Send Message")
-        </button>
+                <button type="submit"
+                        class="btn"
+                        disabled="@_isSubmitting">
+                    @(_isSubmitting ? "Sending..." : "Send Message")
+                </button>
+            </div>
+        </EditForm>
 
-
-    </div>
-</EditForm>
-
-@if (_status is not null)
-{
-    <div class="status @(_status.Success ? "success" : "error")">
-        @_status.Message
-    </div>
-}
+        @if (_status is not null)
+        {
+            <div class="status @(_status.Success ? "success" : "error")">
+                @_status.Message
+            </div>
+        }
+    </section>
+</div>
 
 @code {
-    private string _honeypot = "";
     private ContactFormModel _form = new();
-    private bool _isSubmitting = false;
+    private bool _isSubmitting;
     private StatusMessage? _status;
+    private string _honeypot = string.Empty;
+
+    private sealed record StatusMessage(bool Success, string Message);
 
     private async Task HandleValidSubmit()
     {
@@ -64,7 +77,7 @@
         try
         {
 #if DEBUG
-        var apiUrl = "http://localhost:7071/api/contact";
+            var apiUrl = "http://localhost:7071/api/contact";
 #else
             var apiUrl = "/api/contact";
 #endif
@@ -82,11 +95,11 @@
             if (response.IsSuccessStatusCode)
             {
                 _status = new StatusMessage(true, "Message sent! Thanks for reaching out.");
-                _form = new ContactFormModel(); // clear form
+                _form = new ContactFormModel();
+                _honeypot = string.Empty;
             }
             else
             {
-                // Read the API error JSON even on 400
                 var apiError = await response.Content.ReadFromJsonAsync<ApiResult>();
                 _status = new StatusMessage(false, apiError?.Error ?? "Something went wrong.");
             }
@@ -101,6 +114,9 @@
         }
     }
 
-    private record ApiResult(bool Success, string? Error);
-    private record StatusMessage(bool Success, string Message);
+    private sealed class ApiResult
+    {
+        public bool Success { get; set; }
+        public string? Error { get; set; }
+    }
 }

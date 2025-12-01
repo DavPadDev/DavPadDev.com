@@ -3,49 +3,47 @@
 @inject HttpClient Http
 
 <div class="contact-page">
-    <section class="contact-card">
-        <h1 class="contact-title">Get in touch</h1>
 
-        <p class="contact-intro">
-            Want to reach out? Send a message here and it will go straight to the inbox.
-        </p>
+    <section class="contact-card">
+        <header class="contact-header">
+            <h1>Get in touch</h1>
+            <p>
+                Want to reach out? Send a message here and it will go straight to the inbox.
+            </p>
+        </header>
 
         <EditForm Model="_form" OnValidSubmit="HandleValidSubmit" class="contact-form">
             <DataAnnotationsValidator />
-            <ValidationSummary />
+            <ValidationSummary class="validation-summary" />
 
-            <!-- 🔒 Honeypot (hidden by CSS, used only for bots) -->
+            <!-- 🔒 Honeypot (invisible anti-spam field) -->
             <input autocomplete="off" class="hpot" @bind="_honeypot" />
 
             <div class="form-grid">
 
                 <div class="form-field">
-                    <label for="name-input">Name</label>
-                    <InputText id="name-input"
-                               class="input"
+                    <label class="form-label">Name</label>
+                    <InputText class="input"
                                @bind-Value="_form.Name" />
-                    <ValidationMessage For="@(() => _form.Name)" />
+                    <ValidationMessage For="@(() => _form.Name)" class="validation-message" />
                 </div>
 
                 <div class="form-field">
-                    <label for="email-input">Email</label>
-                    <InputText id="email-input"
-                               class="input"
+                    <label class="form-label">Email</label>
+                    <InputText class="input"
                                @bind-Value="_form.Email" />
-                    <ValidationMessage For="@(() => _form.Email)" />
+                    <ValidationMessage For="@(() => _form.Email)" class="validation-message" />
                 </div>
 
                 <div class="form-field">
-                    <label for="message-input">Message</label>
-                    <InputTextArea id="message-input"
-                                   class="input textarea"
-                                   rows="6"
+                    <label class="form-label">Message</label>
+                    <InputTextArea class="input textarea" rows="6"
                                    @bind-Value="_form.Message" />
-                    <ValidationMessage For="@(() => _form.Message)" />
+                    <ValidationMessage For="@(() => _form.Message)" class="validation-message" />
                 </div>
 
                 <button type="submit"
-                        class="btn"
+                        class="btn-primary"
                         disabled="@_isSubmitting">
                     @(_isSubmitting ? "Sending..." : "Send Message")
                 </button>
@@ -54,8 +52,20 @@
 
         @if (_status is not null)
         {
-            <div class="status @(_status.Success ? "success" : "error")">
-                @_status.Message
+            <div class="status-banner @( _status.Success ? "status-success" : "status-error")">
+                <div class="status-icon">
+                    @if (_status.Success)
+                    {
+                        <span class="icon-check">✔</span>
+                    }
+                    else
+                    {
+                        <span class="icon-error">!</span>
+                    }
+                </div>
+                <div class="status-text">
+                    @_status.Message
+                </div>
             </div>
         }
     </section>
@@ -65,9 +75,34 @@
     private ContactFormModel _form = new();
     private bool _isSubmitting;
     private StatusMessage? _status;
-    private string _honeypot = string.Empty;
+    private string? _honeypot;
 
-    private sealed record StatusMessage(bool Success, string Message);
+    // Simple “view model” for the banner
+    private record StatusMessage(bool Success, string Message);
+
+    // What the API returns on error/success
+    private class ApiResult
+    {
+        public bool Success { get; set; }
+        public string? Error { get; set; }
+    }
+
+    /// <summary>
+    /// Show a status banner for a few seconds, then fade it away.
+    /// </summary>
+    private async Task ShowStatusAsync(StatusMessage status)
+    {
+        _status = status;
+        StateHasChanged();
+
+        // Auto-hide after 5s, but only if nothing newer replaced it
+        await Task.Delay(5000);
+        if (_status == status)
+        {
+            _status = null;
+            StateHasChanged();
+        }
+    }
 
     private async Task HandleValidSubmit()
     {
@@ -94,29 +129,26 @@
 
             if (response.IsSuccessStatusCode)
             {
-                _status = new StatusMessage(true, "Message sent! Thanks for reaching out.");
+                // Reset form + honeypot
                 _form = new ContactFormModel();
                 _honeypot = string.Empty;
+
+                await ShowStatusAsync(new(true, "Message sent! Thanks for reaching out."));
             }
             else
             {
                 var apiError = await response.Content.ReadFromJsonAsync<ApiResult>();
-                _status = new StatusMessage(false, apiError?.Error ?? "Something went wrong.");
+                var msg = apiError?.Error ?? "Something went wrong.";
+                await ShowStatusAsync(new(false, msg));
             }
         }
         catch
         {
-            _status = new StatusMessage(false, "Network error. Try again in a bit.");
+            await ShowStatusAsync(new(false, "Network error. Try again in a bit."));
         }
         finally
         {
             _isSubmitting = false;
         }
-    }
-
-    private sealed class ApiResult
-    {
-        public bool Success { get; set; }
-        public string? Error { get; set; }
     }
 }

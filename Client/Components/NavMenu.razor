@@ -1,44 +1,47 @@
-﻿<nav class="navbar custom-navbar navbar-expand-lg navbar-light">
-    <div class="container-fluid">
-        <!-- Brand / Logo -->
-        <a class="navbar-brand brand-wrapper" href="/">DavPadDev</a>
+﻿<nav class="top-nav">
+    <div class="brand">
+        DavPadDev
+    </div>
 
-        <!-- Toggler (hamburger menu on mobile) -->
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
+    <button class="menu-toggle" @onclick="ToggleNav">
+        <span class="menu-icon">&#9776;</span>
+    </button>
 
-        <!-- Nav links -->
-        <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav ms-auto">
-                <!-- ms-auto pushes nav to right on desktop -->
-                <li class="nav-item">
-                    <NavLink class="nav-link" href="/" Match="NavLinkMatch.All">Home</NavLink>
-                </li>
-                <li class="nav-item">
-                    <NavLink class="nav-link" href="/about">About</NavLink>
-                </li>
-                <li class="nav-item">
-                    <NavLink class="nav-link" href="/projects">Projects</NavLink>
-                </li>
-                <li class="nav-item">
-                    <NavLink class="nav-link" href="/resume">Resume</NavLink>
-                </li>
-                <li class="nav-item">
-                    <NavLink class="nav-link" href="/contact">Contact</NavLink>
-                </li>
-                @if (ShowBlog)
-                {
-                    <li class="nav-item">
-                        <NavLink class="nav-link" href="/blog">Blog</NavLink>
-                    </li>
-                }
-            </ul>
-        </div>
+    <div class="nav-links @( _navOpen ? "open" : "" )">
+        <NavLink href="/" @onclick="CloseNav">Home</NavLink>
+        <NavLink href="/about" @onclick="CloseNav">About</NavLink>
+        <NavLink href="/projects" @onclick="CloseNav">Projects</NavLink>
+        <NavLink href="/resume" @onclick="CloseNav">Resume</NavLink>
+        <NavLink href="/contact" @onclick="CloseNav">Contact</NavLink>
     </div>
 </nav>
 
 @code {
-    private bool ShowBlog = false; // toggle when ready
+    private bool _navOpen = false;
+
+    private void ToggleNav()
+        => _navOpen = !_navOpen;
+
+    private void CloseNav()
+        => _navOpen = false;
+
+    // This is callable from JS
+    [JSInvokable]
+    public static void CollapseFromScroll()
+    {
+        _instance?._Collapse();
+    }
+
+    private void _Collapse()
+    {
+        _navOpen = false;
+        StateHasChanged();
+    }
+
+    private static NavMenu? _instance;
+
+    protected override void OnInitialized()
+    {
+        _instance = this;
+    }
 }

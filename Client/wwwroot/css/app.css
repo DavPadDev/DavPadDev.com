@@ -182,3 +182,13 @@ code {
         border: 1px solid #a02f2f;
     }
 
+.hpot {
+    display: none !important;
+    visibility: hidden !important;
+    height: 0 !important;
+    width: 0 !important;
+    opacity: 0 !important;
+    pointer-events: none !important;
+    position: absolute !important;
+    left: -9999px !important;
+}

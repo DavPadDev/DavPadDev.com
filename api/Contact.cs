@@ -28,6 +28,9 @@ public class Contact
 
         ContactRequest? request;
 
+        // -----------------------
+        // Deserialize JSON safely
+        // -----------------------
         try
         {
             request = await JsonSerializer.DeserializeAsync<ContactRequest>(
@@ -53,7 +56,22 @@ public class Contact
             });
         }
 
-        // Basic validation
+        // -----------------------
+        // Honeypot / Spam Check
+        // -----------------------
+        if (!string.IsNullOrWhiteSpace(request.Honeypot))
+        {
+            _logger.LogWarning("Spam detected: honeypot field was filled.");
+            return await CreateJsonResponse(req, HttpStatusCode.BadRequest, new
+            {
+                success = false,
+                error = "Spam detected."
+            });
+        }
+
+        // -----------------------
+        // Basic Input Validation
+        // -----------------------
         if (string.IsNullOrWhiteSpace(request.Name))
         {
             return await CreateJsonResponse(req, HttpStatusCode.BadRequest, new
@@ -81,7 +99,9 @@ public class Contact
             });
         }
 
-        // Send email via SendGrid
+        // -----------------------
+        // Send Email via SendGrid
+        // -----------------------
         var sent = await _emailService.SendContactEmailAsync(
             request.Name,
             request.Email,
@@ -96,6 +116,9 @@ public class Contact
             });
         }
 
+        // -----------------------
+        // Success Response
+        // -----------------------
         return await CreateJsonResponse(req, HttpStatusCode.OK, new
         {
             success = true,

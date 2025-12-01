@@ -12,6 +12,9 @@
     <DataAnnotationsValidator />
     <ValidationSummary />
 
+    <!-- 🔒 HONEYPOT FIELD (invisible anti-spam) -->
+    <input autocomplete="off" class="hpot" @bind="_honeypot" />
+
     <div class="form-grid">
 
         <div class="form-field">
@@ -48,6 +51,7 @@
 }
 
 @code {
+    private string _honeypot = "bot test";
     private ContactFormModel _form = new();
     private bool _isSubmitting = false;
     private StatusMessage? _status;
@@ -65,8 +69,15 @@
             var apiUrl = "/api/contact";
 #endif
 
-            var response = await Http.PostAsJsonAsync(apiUrl, _form);
+            var payload = new
+            {
+                name = _form.Name,
+                email = _form.Email,
+                message = _form.Message,
+                honeypot = _honeypot
+            };
 
+            var response = await Http.PostAsJsonAsync(apiUrl, payload);
 
             if (response.IsSuccessStatusCode)
             {

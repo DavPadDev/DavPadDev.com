@@ -1,19 +1,44 @@
 ﻿@inherits LayoutComponentBase
-@inject ModalService ModalService
+@using Microsoft.AspNetCore.Components.Routing
 @using DavPadDev.Services
-
+@inject NavigationManager Nav
+@inject ModalService ModalService
+@implements IDisposable
 
 <div class="layout-wrapper">
     <!-- Modal (always present, controlled by service) -->
     <Modal />
 
-    <!-- Global Hero Banner -->
+    <!-- Hero banner -->
     <section class="layout-hero-image">
         <img src="images/default-monochrome-black.svg" alt="Site banner" />
     </section>
 
-    <!-- Navbar -->
-    <NavMenu />
+    <!-- Top Header / Navbar -->
+    <header class="site-header">
+        <div class="site-header-inner">
+            <div class="brand">
+                DavPadDev
+            </div>
+
+            <!-- Mobile hamburger -->
+            <button class="nav-toggle"
+                    @onclick="ToggleNav"
+                    aria-expanded="@_navOpen"
+                    aria-label="Toggle navigation">
+                ☰
+            </button>
+
+            <!-- Nav links -->
+            <nav class="nav-links @( _navOpen ? "open" : string.Empty )">
+                <NavLink href="" Match="NavLinkMatch.All">Home</NavLink>
+                <NavLink href="about">About</NavLink>
+                <NavLink href="projects">Projects</NavLink>
+                <NavLink href="resume">Resume</NavLink>
+                <NavLink href="contact">Contact</NavLink>
+            </nav>
+        </div>
+    </header>
 
     <!-- Page content -->
     <main class="main-layout">
@@ -23,23 +48,34 @@
     <!-- Footer -->
     <footer class="site-footer">
         <p>
-            © @DateTime.Now.Year DavPadDev · Built with <strong>Blazor WebAssembly</strong> 🚀
+            @DateTime.Now.Year DavPadDev ·
+            Built with <strong>Blazor WebAssembly</strong> 🚀
         </p>
     </footer>
 </div>
 
-@code {
-    protected override void OnAfterRender(bool firstRender)
+@code
+{
+    private bool _navOpen;
+
+    private void ToggleNav() => _navOpen = !_navOpen;
+
+    private void OnLocationChanged(object? sender, LocationChangedEventArgs e)
     {
-        if (firstRender)
+        if (_navOpen)
         {
-            ModalService.ShowModal(
-                "🚧 Portfolio Under Construction 🚧",
-                "This site is a work in progress — feel free to look around and check back for updates!",
-                "(Thanks for your patience — I’m building this from scratch as a full <b>.NET Blazor WebAssembly app</b>. Even this notification is its own <b>component + service</b> wired with dependency injection. Every click, fade-in, and sticky navbar you see was handcrafted without templates 🛠️)",
-                new ModalButton("Got it", () => { })
-            );
+            _navOpen = false;
+            InvokeAsync(StateHasChanged);
         }
     }
-}
 
+    protected override void OnInitialized()
+    {
+        Nav.LocationChanged += OnLocationChanged;
+    }
+
+    public void Dispose()
+    {
+        Nav.LocationChanged -= OnLocationChanged;
+    }
+}

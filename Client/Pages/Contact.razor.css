@@ -141,11 +141,11 @@
     margin-top: 0.75rem;
     width: 100%;
     padding: 0.7rem 1rem;
-    border-radius: var(--dpd-radius-pill);
+    border-radius: var(--dpd-radius-pill, 999px);
     border: none;
     cursor: pointer;
-    background: linear-gradient(120deg, var(--dpd-primary), var(--dpd-primary-dark));
-    color: #ffffff;
+    background: linear-gradient( 120deg, var(--dpd-primary, #2563eb), var(--dpd-primary-dark, #1d4ed8) );
+    color: #fff !important;
     font-size: 0.95rem;
     font-weight: 600;
     letter-spacing: 0.03em;

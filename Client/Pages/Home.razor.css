@@ -11,28 +11,102 @@ section {
     text-align: center;
 }
 
+/* --- NEW: consistent header row (title + link) --- */
+.section-header {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 1rem;
+    margin-bottom: 1rem;
+    text-align: left;
+}
+
+    .section-header h2 {
+        margin: 0;
+    }
+
+.section-link {
+    font-weight: 600;
+    text-decoration: none;
+    color: #0078d4;
+}
+
+    .section-link:hover {
+        text-decoration: underline;
+    }
+
 /* Hero Section */
 .hero {
     padding: 4rem 1rem;
 }
 
-    .hero h1 {
-        font-size: 2.5rem;
-        margin-bottom: 1rem;
-    }
-
-    .hero p {
-        font-size: 1.2rem;
-        color: #555;
-    }
-
-/* About Section */
-.about-preview p {
-    max-width: 700px;
-    margin: 0 auto;
+.hero-eyebrow {
+    margin: 0 0 0.5rem 0;
+    font-size: 0.95rem;
+    color: #555;
 }
 
+.hero h1 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+}
+
+.hero-subtitle {
+    font-size: 1.2rem;
+    color: #555;
+    margin: 0 auto;
+    max-width: 700px;
+}
+
+.hero-actions {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+    margin-top: 1.5rem;
+}
+
+/* About Section */
+.about-preview {
+    text-align: left;
+}
+
+.about-grid {
+    display: grid;
+    grid-template-columns: 140px 1fr;
+    gap: 1.5rem;
+    align-items: start;
+}
+
+.about-photo {
+    width: 140px;
+    height: 140px;
+    border-radius: 12px;
+    background: #f2f2f2;
+    border: 1px solid #e0e0e0;
+}
+
+.about-copy p {
+    margin-top: 0;
+    margin-bottom: 0.75rem;
+    max-width: 700px;
+}
+
+.about-bullets {
+    margin: 0;
+    padding-left: 1.2rem;
+    color: #555;
+}
+
+    .about-bullets li {
+        margin: 0.35rem 0;
+    }
+
 /* Projects Section */
+.projects-preview {
+    text-align: left;
+}
+
 .projects-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -55,6 +129,7 @@ section {
 
 .projects-link {
     margin-top: 2rem;
+    text-align: center;
 }
 
 /* Project card links */
@@ -74,7 +149,6 @@ section {
         .project-links a:hover {
             text-decoration: underline;
         }
-
 
 /* CTA Section */
 .cta h2 {
@@ -147,8 +221,7 @@ section {
     animation-delay: 1.4s;
 }
 
-/* Remove the default black focus outline on load,
-   but keep keyboard accessibility */
+/* Keep keyboard accessibility */
 :focus {
     outline: none;
 }
@@ -170,3 +243,24 @@ section {
     .project-image:hover {
         transform: scale(1.02);
     }
+
+/* Responsive: keep sections readable on small screens */
+@media (max-width: 640px) {
+    .section-header {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    .about-grid {
+        grid-template-columns: 1fr;
+        text-align: center;
+    }
+
+    .about-photo {
+        margin: 0 auto;
+        width: 100%;
+        max-width: 320px;
+        height: 180px;
+    }
+}

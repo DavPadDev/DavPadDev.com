@@ -4,44 +4,102 @@
 
     <!-- Hero / Banner -->
     <section class="hero fade-in delay-0">
+        <p class="hero-eyebrow">.NET · Blazor WebAssembly · Full-Stack</p>
         <h1>Welcome to my Portfolio</h1>
-        <p>Building modern web solutions with .NET and Blazor.</p>
+        <p class="hero-subtitle">Building modern web solutions with .NET and Blazor.</p>
+
+        <div class="hero-actions">
+            <a class="btn" href="/projects">View Projects</a>
+            <a class="btn secondary" href="/contact">Contact</a>
+        </div>
     </section>
 
     <!-- About Blurb -->
     <section class="about-preview fade-in delay-1">
-        <h2>About Me</h2>
-        <p>
-            I'm a passionate developer with experience in building web apps,
-            cloud solutions, and creative projects.
-            <a href="/about">Read more →</a>
-        </p>
+        <div class="section-header">
+            <h2>About Me</h2>
+            <a class="section-link" href="/about">Read more →</a>
+        </div>
+
+        <div class="about-grid">
+            <!-- Swap this to <img class="about-photo" src="images/yourphoto.jpg" ... /> later -->
+            <div class="about-photo" aria-hidden="true"></div>
+
+            <div class="about-copy">
+                <p>
+                    I'm a passionate developer with experience in building web apps,
+                    cloud solutions, and creative projects.
+                </p>
+
+                <ul class="about-bullets">
+                    <li>Clean, responsive UI with scoped CSS</li>
+                    <li>Backend integration + spam protection (Contact page)</li>
+                    <li>Component-based architecture and maintainable structure</li>
+                </ul>
+            </div>
+        </div>
     </section>
 
     <!-- Projects Preview -->
     <section class="projects-preview fade-in delay-2">
-        <h2>Highlighted Projects</h2>
-        <div class="projects-grid">
-            <div class="project-card">
-                <img src="images/githubscreenshot.png" alt="DavPadDev Portfolio Screenshot" class="project-image" />
-                <h3>DavPadDev.com</h3>
-                <p>
-                    This site itself is one of my projects, built with Blazor WebAssembly and deployed on Azure using GitHub-based CI/CD. It features a clean, responsive UI with subtle animations designed to be fast, responsive, and visually engaging. It showcases a modern component-based design and responsive layout principles.
-                </p>
-                <div class="project-links">
-                    <a href="https://github.com/DavPadDev/DavPadDev.com" target="_blank" rel="noopener noreferrer">
-                        View Code on GitHub →
-                    </a>
-                </div>
-            </div>
-            <div class="project-card">
-                <h3>Project Two</h3>
-                <p>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur vel sapien ut risus luctus volutpat. Aenean suscipit eros et enim euismod, quis hendrerit nibh tincidunt.
-                </p>
-                <a href="/projects">View Project →</a>
-            </div>
+        <div class="section-header">
+            <h2>Highlighted Projects</h2>
+            <a class="section-link" href="/projects">See all →</a>
         </div>
+
+        <div class="projects-grid">
+            <article class="project-card">
+                <div class="project-image-wrap">
+                    <img src="images/stellashairstudio-home.png"
+                         alt="Screenshot of Stella's Hair Studio homepage"
+                         class="project-image" />
+                </div>
+
+                <div class="project-card-body">
+                    <h3>Stella’s Hair Studio</h3>
+                    <p class="project-tech">Blazor WebAssembly · Azure Static Web Apps · Responsive UI</p>
+
+                    <p>
+                        A client website rebuilt with a polished salon-focused design, service showcase,
+                        stylist pages, and a working contact flow for a real business. This project highlights front-end polish,
+                        branding, and real client-oriented development.
+                    </p>
+
+                    <div class="project-links">
+                        <a href="https://stellashairstudio.com" target="_blank" rel="noopener noreferrer">
+                            Visit Live Site →
+                        </a>
+                        <a href="/projects">Details →</a>
+                    </div>
+                </div>
+            </article>
+
+            <article class="project-card">
+                <div class="project-image-wrap">
+                    <img src="images/mealtracker-home.png"
+                         alt="Screenshot of MealTracker prototype homepage"
+                         class="project-image" />
+                </div>
+
+                <div class="project-card-body">
+                    <h3>MealTracker</h3>
+                    <p class="project-tech">Blazor · Pantry Logic · Recipe Workflow</p>
+
+                    <p>
+                        A pantry-first meal planning prototype that helps users see what they can cook,
+                        track ingredients on hand, and make practical cooking decisions faster.
+                    </p>
+
+                    <div class="project-links">
+                        <a href="https://YOUR-MEALTRACKER-URL-HERE" target="_blank" rel="noopener noreferrer">
+                            View Live Prototype →
+                        </a>
+                        <a href="/projects">Details →</a>
+                    </div>
+                </div>
+            </article>
+        </div>
+
         <div class="projects-link">
             <a class="btn" href="/projects">See All Projects</a>
         </div>
@@ -51,6 +109,7 @@
     <section class="cta fade-in delay-3">
         <h2>Let’s Work Together</h2>
         <p>Interested in collaborating or learning more?</p>
+
         <div class="cta-buttons">
             <a class="btn" href="/resume">View Resume</a>
             <a class="btn secondary" href="/contact">Contact Me</a>

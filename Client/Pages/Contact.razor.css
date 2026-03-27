@@ -52,6 +52,46 @@
     color: #4b5563;
 }
 
+/* Header extras */
+.contact-lead {
+    margin: 0 0 0.75rem;
+    font-size: 0.98rem;
+    color: #374151;
+    line-height: 1.5;
+}
+
+.contact-meta {
+    margin: 0 0 1.75rem;
+    font-size: 0.9rem;
+    color: #6b7280;
+    line-height: 1.5;
+}
+
+.contact-meta p {
+ margin: 0 0 0.4rem;
+}
+
+.contact-highlight {
+    font-style: italic;
+    color: #374151;
+}
+
+.contact-divider {
+    margin: 0 0.5rem;
+    opacity: 0.7;
+}
+
+.contact-phone {
+    font-weight: 600;
+    color: var(--dpd-primary, #2563eb);
+    text-decoration: none;
+}
+
+.contact-phone:hover {
+    text-decoration: underline;
+}
+
+
 
 
 /* =========================================

@@ -1,4 +1,203 @@
 ﻿@page "/projects"
 
-<ComingSoon PageName="Projects"
-            Message="This section will showcase my portfolio projects with details and links. Check back soon!" />
+<PageTitle>Projects</PageTitle>
+
+<div class="projects-page">
+
+    <!-- HERO -->
+    <section class="projects-hero">
+        <p class="projects-eyebrow">Portfolio</p>
+        <h1>Projects</h1>
+        <p class="projects-intro">
+            A closer look at real-world builds using Blazor, .NET, and Azure, with a focus on clean UI,
+            practical functionality, and production-ready deployment.
+        </p>
+    </section>
+
+    <!-- STELLA PROJECT -->
+    <section class="project-section">
+        <div class="project-shell">
+
+            <!-- IMAGE -->
+            <div class="project-media">
+                <img src="images/stellashairstudio-projects.png" alt="Stella's Hair Studio website preview" />
+            </div>
+
+            <!-- CONTENT -->
+            <div class="project-details">
+
+                <p class="project-type">Business Website</p>
+
+                <h2>Stella’s Hair Studio</h2>
+
+                <p class="project-lead">
+                    A responsive salon website with modern branding, a polished user experience, and a working
+                    appointment request flow.
+                </p>
+
+                <!-- OVERVIEW -->
+                <div class="project-group">
+                    <p class="project-label">Overview</p>
+                    <p class="project-description">
+                        This project rebuilt an existing site into a more professional and flexible Blazor WebAssembly
+                        application. The focus was on creating a stronger visual identity, improving the mobile experience,
+                        and supporting real client needs with a cleaner scheduling flow and production deployment.
+                    </p>
+                </div>
+
+                <!-- HIGHLIGHTS -->
+                <div class="project-group">
+                    <p class="project-label">Highlights</p>
+                    <ul class="project-highlights">
+                        <li>Responsive redesign with custom branding and improved mobile navigation</li>
+                        <li>Appointment request workflow connected to an Azure Functions backend</li>
+                        <li>Production deployment through Azure Static Web Apps</li>
+                    </ul>
+                </div>
+
+                <!-- STACK -->
+                <div class="project-group">
+                    <p class="project-label">Stack</p>
+                    <div class="project-tech">
+                        <span>Blazor WASM</span>
+                        <span>.NET</span>
+                        <span>Azure Functions</span>
+                        <span>Azure Static Web Apps</span>
+                    </div>
+                </div>
+
+                <!-- LINKS -->
+                <div class="project-links">
+                    <a href="https://stellashairstudio.com" target="_blank" rel="noopener noreferrer">
+                        Visit Live Site →
+                    </a>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- MEAL TRACKER PROJECT -->
+    <section class="project-section">
+        <div class="project-shell reverse">
+
+            <!-- IMAGE -->
+            <div class="project-media">
+                <img src="images/mealtracker-projects.png" alt="MealTracker app preview" />
+            </div>
+
+            <!-- CONTENT -->
+            <div class="project-details">
+
+                <p class="project-type">Web Application</p>
+
+                <h2>Kitchen Today</h2>
+
+                <p class="project-lead">
+                    A full-stack web app for managing recipes, pantry items, and shopping lists, designed with a clean,
+                    mobile-first interface.
+                </p>
+
+                <!-- OVERVIEW -->
+                <div class="project-group">
+                    <p class="project-label">Overview</p>
+                    <p class="project-description">
+                        Kitchen Today was built as a personal project to explore full-stack development with Blazor and Azure.
+                        It connects a Blazor WebAssembly frontend with an ASP.NET Core API and SQL database, focusing on
+                        real-world usability and state-driven UI updates.
+                    </p>
+                </div>
+
+                <!-- HIGHLIGHTS -->
+                <div class="project-group">
+                    <p class="project-label">Highlights</p>
+                    <ul class="project-highlights">
+                        <li>Full CRUD for recipes, pantry, and shopping list management</li>
+                        <li>Dynamic “cookable recipes” logic based on pantry inventory</li>
+                        <li>REST API hosted on Azure App Service with SQL persistence</li>
+                        <li>State-driven UI with shared data across components</li>
+                    </ul>
+                </div>
+
+                <!-- STACK -->
+                <div class="project-group">
+                    <p class="project-label">Stack</p>
+                    <div class="project-tech">
+                        <span>Blazor WASM</span>
+                        <span>.NET API</span>
+                        <span>Azure App Service</span>
+                        <span>Azure SQL</span>
+                    </div>
+                </div>
+
+                <!-- LINKS -->
+                <div class="project-links">
+                    <a href="https://davpaddev.com" target="_blank" rel="noopener noreferrer">
+                        View Project →
+                    </a>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- PORTFOLIO PROJECT -->
+    <section class="project-section">
+        <div class="project-shell">
+
+            <!-- IMAGE -->
+            <div class="project-media">
+                <img src="images/davpaddev-projects.png" alt="davpaddev.com portfolio preview" />
+            </div>
+
+            <!-- CONTENT -->
+            <div class="project-details">
+
+                <p class="project-type">Portfolio Website</p>
+
+                <h2>DavPadDev.com</h2>
+
+                <p class="project-lead">
+                    A personal portfolio designed to showcase real-world projects with a focus on clarity,
+                    structure, and professional presentation.
+                </p>
+
+                <div class="project-group">
+                    <p class="project-label">Overview</p>
+                    <p class="project-description">
+                        This site was built to present projects in a way that reflects how they were actually
+                        developed. The focus is on clean layout, readable case studies, and a structure that
+                        highlights both technical decisions and user experience.
+                    </p>
+                </div>
+
+                <div class="project-group">
+                    <p class="project-label">Highlights</p>
+                    <ul class="project-highlights">
+                        <li>Reusable layout and component structure across pages</li>
+                        <li>Consistent design system with scoped CSS and spacing rhythm</li>
+                        <li>Deployed with Azure Static Web Apps and GitHub Actions</li>
+                    </ul>
+                </div>
+
+                <div class="project-group">
+                    <p class="project-label">Stack</p>
+                    <div class="project-tech">
+                        <span>Blazor WASM</span>
+                        <span>.NET</span>
+                        <span>Azure SWA</span>
+                        <span>CSS</span>
+                    </div>
+                </div>
+
+                <div class="project-links">
+                    <a href="/" rel="noopener noreferrer">
+                        You’re already here →
+                    </a>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+</div>

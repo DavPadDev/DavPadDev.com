@@ -282,3 +282,9 @@ code {
             width: 100%;
         }
 }
+
+*:focus,
+*:focus-visible {
+    outline: none !important;
+    box-shadow: none !important;
+}

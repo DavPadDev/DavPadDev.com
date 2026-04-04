@@ -1,0 +1,48 @@
+﻿/* --- SHARED HERO SYSTEM --- */
+
+.page-hero {
+    max-width: var(--container-md);
+    margin: 0 auto .75rem;
+    text-align: center;
+}
+
+.page-eyebrow {
+    margin: 0 0 0.65rem;
+    font-size: 0.76rem;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--accent);
+}
+
+.page-hero h1 {
+    margin: 0 0 0.9rem;
+    font-size: clamp(2.5rem, 4vw, 3.4rem);
+    font-weight: 600;
+    letter-spacing: -0.03em;
+    line-height: 1.02;
+    color: var(--text-strong);
+}
+
+.page-intro {
+    margin: 0 auto;
+    max-width: 660px;
+    font-size: 1.05rem;
+    line-height: 1.75;
+    color: var(--text-body);
+}
+
+@media (max-width: 640px) {
+    .page-hero {
+        margin: 0 auto 0.5rem;
+    }
+
+        .page-hero h1 {
+            font-size: 2.3rem;
+        }
+
+    .page-intro {
+        font-size: 1rem;
+        line-height: 1.6;
+    }
+}

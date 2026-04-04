@@ -1,0 +1,236 @@
+﻿.about-page {
+    padding: 2.5rem 1rem 5rem;
+}
+
+.about-container {
+    max-width: 1050px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+/* BASE SECTION */
+.about-section {
+    background: #ffffff;
+    border: 1px solid #e5e7eb;
+    border-radius: 18px;
+    padding: 1.75rem 1.5rem;
+    box-shadow: 0 8px 24px rgba(15, 23, 42, 0.04);
+    text-align: left;
+}
+
+    .about-section h2 {
+        margin: 0 0 0.9rem 0;
+        font-size: 1.8rem;
+        color: #111827;
+        line-height: 1.15;
+    }
+
+    .about-section p {
+        margin: 0 0 1rem 0;
+        line-height: 1.8;
+        color: #374151;
+        font-size: 1.02rem;
+    }
+
+        .about-section p:last-child {
+            margin-bottom: 0;
+        }
+
+/* INTRO SECTION */
+.about-intro {
+    background: linear-gradient(180deg, #fffdf8 0%, #ffffff 100%);
+    border-top: 5px solid #c89b5e;
+    border-color: #ece7dc;
+}
+
+.about-label {
+    color: #9a6d35;
+}
+
+.about-intro-grid {
+    display: grid;
+    grid-template-columns: 1.05fr 0.95fr;
+    gap: 1.75rem;
+    align-items: center;
+}
+
+.about-intro-image-wrap {
+    display: flex;
+    justify-content: center;
+}
+
+.about-intro-image {
+    width: 100%;
+    max-width: 340px;
+    aspect-ratio: 4 / 5;
+    object-fit: cover;
+    object-position: center;
+    border-radius: 20px;
+    border: 1px solid #e5e7eb;
+    box-shadow: 0 12px 28px rgba(15, 23, 42, 0.10);
+    background: #f3f4f6;
+}
+
+/* SECTION LABELS */
+.section-heading {
+    margin-bottom: 1rem;
+}
+
+.section-label {
+    margin: 0 0 0.35rem 0;
+    font-size: 0.82rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    font-weight: 700;
+    color: #2563eb;
+}
+
+/* DEVELOPMENT APPROACH */
+.about-build {
+    overflow: hidden;
+    border-left: 5px solid #2563eb;
+    background: linear-gradient(180deg, #f8fbff 0%, #ffffff 100%);
+}
+
+.about-build-list {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.9rem 1.25rem;
+}
+
+    .about-build-list li {
+        position: relative;
+        padding-left: 1.4rem;
+        line-height: 1.7;
+        color: #374151;
+    }
+
+        .about-build-list li::before {
+            content: "";
+            position: absolute;
+            left: 0;
+            top: 0.72rem;
+            width: 0.5rem;
+            height: 0.5rem;
+            border-radius: 999px;
+            background: #2563eb;
+            transform: translateY(-50%);
+        }
+
+/* BACKGROUND */
+.about-background {
+    background: linear-gradient(180deg, #f8fafc 0%, #ffffff 100%);
+    border-left: 5px solid #4b5563;
+}
+
+.background-label {
+    color: #4b5563;
+}
+
+.background-grid {
+    display: grid;
+    grid-template-columns: 1fr 300px;
+    gap: 1.5rem;
+    align-items: center;
+}
+
+.background-image {
+    width: 100%;
+    aspect-ratio: 4 / 5;
+    object-fit: cover;
+    object-position: center;
+    border-radius: 18px;
+    border: 1px solid #e5e7eb;
+    box-shadow: 0 10px 24px rgba(15, 23, 42, 0.08);
+    background: #f3f4f6;
+}
+
+/* FADE IN */
+.fade-in {
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeInUp 0.8s ease forwards;
+}
+
+@keyframes fadeInUp {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.delay-0 {
+    animation-delay: 0.15s;
+}
+
+.delay-1 {
+    animation-delay: 0.3s;
+}
+
+.delay-2 {
+    animation-delay: 0.45s;
+}
+
+.delay-3 {
+    animation-delay: 0.6s;
+}
+
+:focus {
+    outline: none;
+}
+
+:focus-visible {
+    outline: 2px solid #2563eb;
+    outline-offset: 4px;
+}
+
+/* MOBILE */
+@media (max-width: 900px) {
+    .about-intro-grid,
+    .background-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .about-build-list {
+        grid-template-columns: 1fr;
+    }
+
+    .about-intro-image-wrap,
+    .background-image-wrap {
+        justify-content: flex-start;
+    }
+
+    .about-intro-image {
+        max-width: 320px;
+    }
+}
+
+@media (max-width: 640px) {
+    .about-page {
+        padding: 2rem 0.85rem 5rem;
+    }
+
+    .about-section {
+        border-radius: 16px;
+        padding: 1.25rem 1rem;
+    }
+
+        .about-section h2 {
+            font-size: 1.5rem;
+        }
+
+        .about-section p,
+        .about-build-list li {
+            font-size: 0.98rem;
+        }
+
+    .about-intro-image,
+    .background-image {
+        max-width: 100%;
+    }
+}

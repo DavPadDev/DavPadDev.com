@@ -1,0 +1,17 @@
+﻿:root {
+    /* Colors */
+    --accent: #5b7cff;
+    --text-strong: #1a1a1a;
+    --text-body: #555;
+    --surface-soft: #f7f7f8;
+    /* Brand (your existing ones merged in) */
+    --dpd-primary: #2563eb;
+    --dpd-primary-dark: #1d4ed8;
+    /* Radius */
+    --radius-md: 10px;
+    --radius-lg: 16px;
+    --radius-pill: 999px;
+    /* Layout widths */
+    --container-md: 760px;
+    --container-lg: 1240px;
+}

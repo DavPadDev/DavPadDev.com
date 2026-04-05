@@ -1,0 +1,21 @@
+﻿<section class="page-cta @Class @(Center ? "centered" : "")">
+    <h2>@Title</h2>
+    <p>@Message</p>
+
+    <div class="page-cta-actions">
+        <a class="btn" href="@PrimaryHref">@PrimaryText</a>
+        <a class="btn secondary" href="@SecondaryHref">@SecondaryText</a>
+    </div>
+</section>
+
+@code {
+    [Parameter] public bool Center { get; set; } = false;
+    [Parameter] public string Class { get; set; } = "";
+
+    [Parameter] public string Title { get; set; } = "Let’s Work Together";
+    [Parameter] public string Message { get; set; } = "Interested in collaborating or learning more?";
+    [Parameter] public string PrimaryText { get; set; } = "View Resume";
+    [Parameter] public string PrimaryHref { get; set; } = "/resume";
+    [Parameter] public string SecondaryText { get; set; } = "Contact Me";
+    [Parameter] public string SecondaryHref { get; set; } = "/contact";
+}

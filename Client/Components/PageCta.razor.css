@@ -1,0 +1,67 @@
+﻿.page-cta {
+    margin-top: 2.5rem;
+    text-align: left;
+}
+
+    .page-cta h2 {
+        margin: 0 0 0.5rem;
+        font-size: clamp(2rem, 4vw, 2.6rem);
+        line-height: 1.1;
+        color: #1a1a1a;
+    }
+
+    .page-cta p {
+        margin: 0 0 1.5rem;
+        font-size: 1.05rem;
+        line-height: 1.7;
+        color: #555;
+    }
+
+.page-cta-actions {
+    display: flex;
+    gap: 1rem;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+}
+
+.page-cta .btn {
+    display: inline-block;
+    padding: 0.7rem 1.25rem;
+    border-radius: 10px;
+    background-color: #2563eb;
+    color: #fff;
+    text-decoration: none;
+    font-weight: 600;
+    transition: background-color 0.2s ease;
+}
+
+    .page-cta .btn:hover {
+        background-color: #1d4ed8;
+    }
+
+    .page-cta .btn.secondary {
+        background-color: #6b7280;
+    }
+
+        .page-cta .btn.secondary:hover {
+            background-color: #4b5563;
+        }
+
+.page-cta.centered {
+    text-align: center;
+}
+
+    .page-cta.centered .page-cta-actions {
+        justify-content: center;
+    }
+
+@media (max-width: 640px) {
+    .page-cta {
+        margin-top: 2rem;
+        text-align: center;
+    }
+
+    .page-cta-actions {
+        justify-content: center;
+    }
+}

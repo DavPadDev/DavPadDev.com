@@ -1,9 +1,11 @@
 ﻿.about-page {
-    padding: 2.5rem 1rem 5rem;
+    width: 100%;
+    padding: 0 0 5rem;
 }
 
 .about-container {
-    max-width: 1050px;
+    width: 100%;
+    max-width: 980px;
     margin: 0 auto;
     display: flex;
     flex-direction: column;

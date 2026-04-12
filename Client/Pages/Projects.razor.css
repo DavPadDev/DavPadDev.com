@@ -1,7 +1,8 @@
 ﻿.projects-page {
+    width: 100%;
     max-width: 1240px;
     margin: 0 auto;
-    padding: 2.75rem 1.5rem 5rem;
+    padding: 0 0 5rem;
 }
 
 .projects-hero {

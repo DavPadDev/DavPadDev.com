@@ -19,16 +19,19 @@
         margin: 0 auto;
     }
 
-/* Main content gets padding so footer doesn't overlap */
+/* Main content shell */
 .main-layout {
     flex: 1;
-    margin: 0 !important;
-    padding: 0 0 60px 0 !important; /* bottom padding = footer height */
+    width: 100%;
+    max-width: 1240px;
+    margin: 0 auto !important;
+    padding: 0 1.5rem 60px !important;
+    box-sizing: border-box;
     display: flex;
     flex-direction: column;
 }
 
-/* Sticky footer (thin status bar) */
+/* Sticky footer */
 .site-footer {
     position: fixed;
     bottom: 0;
@@ -36,10 +39,10 @@
     width: 100%;
     background: linear-gradient(90deg, #dee2e6, #ced4da);
     text-align: center;
-    padding: 6px 10px; /* slim padding */
-    font-size: 0.75rem; /* small text */
+    padding: 6px 10px;
+    font-size: 0.75rem;
     color: #444;
-    box-shadow: 0 -1px 3px rgba(0,0,0,0.08); /* subtle shadow */
+    box-shadow: 0 -1px 3px rgba(0,0,0,0.08);
     z-index: 1030;
 }
 

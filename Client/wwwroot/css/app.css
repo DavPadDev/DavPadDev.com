@@ -195,14 +195,12 @@ code {
     display: flex;
     gap: 1.25rem;
     align-items: center;
-    /* defaults, overridden in mobile */
     transition: max-height 0.25s ease-out, opacity 0.2s ease;
     overflow: hidden;
     max-height: 999px;
     opacity: 1;
 }
 
-    /* Blazor NavLink styling */
     .nav-links a {
         text-decoration: none;
         color: #334155;
@@ -225,14 +223,6 @@ code {
     cursor: pointer;
 }
 
-/* Page content area */
-.main-layout {
-    max-width: 1100px;
-    margin: 0 auto;
-    padding: 2rem 1.25rem 3rem;
-    flex: 1 0 auto;
-}
-
 /* Footer */
 .site-footer {
     border-top: 1px solid #dde3ee;
@@ -240,6 +230,64 @@ code {
     font-size: 0.8rem;
     color: #6b7280;
     text-align: center;
+}
+
+/* === Global Layout Container === */
+.home-container {
+    max-width: 1100px; /* tighter + more modern */
+    margin: 0 auto; /* centers everything */
+    padding: 0 1.5rem; /* side breathing room */
+}
+
+    /* Section spacing */
+    .home-container section {
+        margin-bottom: 3rem;
+    }
+
+/* Prevent full-width stretch issues */
+.projects-grid,
+.about-grid {
+    width: 100%;
+}
+
+/* ==========================
+   Responsive navbar (mobile)
+   ========================== */
+
+@media (max-width: 768px) {
+    .site-header-inner {
+        padding-inline: 0.75rem;
+    }
+
+    .nav-toggle {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .nav-links {
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: 100%;
+        background: #f5f7fb;
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 0.5rem 0.75rem;
+        border-bottom: 1px solid #dde3ee;
+        max-height: 0;
+        opacity: 0;
+    }
+
+        .nav-links.open {
+            max-height: 400px;
+            opacity: 1;
+        }
+
+        .nav-links a {
+            padding: 0.35rem 0.25rem;
+            width: 100%;
+        }
 }
 
 /* ==========================

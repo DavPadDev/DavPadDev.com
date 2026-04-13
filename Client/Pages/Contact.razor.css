@@ -3,20 +3,18 @@
    ========================================= */
 
 .contact-page {
-    display: flex;
-    justify-content: center;
-    padding: 2.5rem 1rem 4rem;
+    width: 100%;
+    padding: 0 1rem 4rem;
 }
 
 .contact-card {
     width: 100%;
     max-width: 520px;
-    margin: 0 auto;
+    margin: 0 auto 3rem;
     padding: 2rem 1.75rem 2.25rem;
     border-radius: var(--dpd-radius-lg);
     background: var(--dpd-surface);
-    box-shadow: 0 18px 45px rgba(15, 23, 42, 0.12);
-    /* subtle entrance animation */
+    box-shadow: 0 18px 45px rgba(37, 99, 235, 0.14);
     animation: contact-card-in 220ms ease-out;
 }
 
@@ -53,12 +51,6 @@
 }
 
 /* Header extras */
-.contact-lead {
-    margin: 0 0 0.75rem;
-    font-size: 0.98rem;
-    color: #374151;
-    line-height: 1.5;
-}
 
 .contact-meta {
     margin: 0 0 1.75rem;
@@ -302,7 +294,7 @@
     .contact-card {
         padding: 1.5rem 1.25rem 2rem;
         border-radius: 14px;
-        box-shadow: 0 14px 34px rgba(15, 23, 42, 0.16);
+        box-shadow: 0 14px 34px rgba(37, 99, 235, 0.16);
     }
 
     .contact-header h1 {

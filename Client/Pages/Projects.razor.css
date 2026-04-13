@@ -5,39 +5,6 @@
     padding: 0 0 5rem;
 }
 
-/* HERO */
-.page-hero {
-    max-width: 760px;
-    margin: 0 auto 2.75rem;
-    text-align: center;
-}
-
-.page-eyebrow {
-    margin: 0 0 0.65rem;
-    font-size: 0.82rem;
-    font-weight: 700;
-    letter-spacing: 0.16em;
-    text-transform: uppercase;
-    color: #666;
-}
-
-.page-hero h1 {
-    margin: 0 0 0.9rem;
-    font-size: clamp(2.5rem, 4vw, 3.4rem);
-    font-weight: 600;
-    letter-spacing: -0.03em;
-    line-height: 1.02;
-    color: #111827;
-}
-
-.page-intro {
-    margin: 0 auto;
-    max-width: 660px;
-    font-size: 1.05rem;
-    line-height: 1.75;
-    color: #4b5563;
-}
-
 /* SECTION WRAPPER */
 .project-section {
     margin-top: 2rem;

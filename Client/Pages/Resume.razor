@@ -1,4 +1,199 @@
 ﻿@page "/resume"
 
-<ComingSoon PageName="Resume"
-            Message="A downloadable copy of my resume will be available here shortly." />
+<div class="resume-page">
+    <div class="resume-container">
+
+        <!-- Consistent Page Hero -->
+        <section class="page-hero fade-in delay-0">
+            <p class="page-eyebrow">Resume</p>
+
+            <h1>Full-Stack Developer with IT Operations Background</h1>
+
+            <p class="page-intro">
+                A web-based preview of my experience, technical skills, and selected work,
+                with a PDF version available for a more traditional resume format.
+            </p>
+
+            <div class="resume-hero-actions">
+                <a class="resume-button resume-button-primary"
+                   href="resume/David_Padilla_Resume.pdf"
+                   target="_blank"
+                   rel="noopener">
+                    View Resume PDF
+                </a>
+
+                <a class="resume-button resume-button-secondary" href="/projects">
+                    View Projects
+                </a>
+            </div>
+        </section>
+
+        <!-- Professional Summary -->
+        <section class="resume-section resume-summary fade-in delay-1">
+            <div class="section-heading">
+                <p class="section-label summary-label">Intoduction</p>
+                <h2>Professional Summary</h2>
+            </div>
+
+            <p>
+                Focused on building practical, real-world web applications that are clean, reliable, and easy to use.
+
+                I develop and deploy applications using .NET, Blazor WebAssembly, and Azure, with an emphasis on structured architecture and maintainable code.
+
+                My approach is shaped by hands-on experience in IT operations and problem solving, with a focus on building systems that work the way they should.
+            </p>
+        </section>
+
+        <!-- Education & Certifications -->
+        <section class="resume-section resume-education fade-in delay-3">
+            <div class="section-heading">
+                <p class="section-label education-label">Education & Certifications</p>
+                <h2>Education and Credentials</h2>
+            </div>
+
+            <div class="resume-credential-list">
+                <article class="resume-credential-item">
+                    <h3>Associate Degree in Information Technology</h3>
+                    <p>Programming and Software Development focus</p>
+                </article>
+
+                <article class="resume-credential-item">
+                    <h3>Analytics Degree</h3>
+                    <p>Currently in progress</p>
+                </article>
+
+                <article class="resume-credential-item">
+                    <h3>CompTIA Security+</h3>
+                    <p>Foundation in security fundamentals and secure systems</p>
+                </article>
+            </div>
+        </section>
+
+        <!-- Core Skills -->
+        <section class="resume-section resume-skills fade-in delay-2">
+            <div class="section-heading">
+                <p class="section-label skills-label">Core Skills</p>
+                <h2>Technical Stack</h2>
+            </div>
+
+            <div class="resume-skill-grid">
+                <div class="resume-skill-group">
+                    <h3>Languages</h3>
+                    <p>C#, SQL, Java, Python, R, HTML, CSS</p>
+                </div>
+
+                <div class="resume-skill-group">
+                    <h3>Frameworks & Platforms</h3>
+                    <p>.NET, Blazor WebAssembly</p>
+                </div>
+
+                <div class="resume-skill-group">
+                    <h3>Cloud & Deployment</h3>
+                    <p>Azure Static Web Apps, Azure Functions, Azure App Service, GitHub Actions</p>
+                </div>
+
+                <div class="resume-skill-group">
+                    <h3>Databases & Tools</h3>
+                    <p>SQL Server, SSMS, API integration, deployment configuration</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Experience -->
+        <section class="resume-section resume-experience fade-in delay-3">
+            <div class="section-heading">
+                <p class="section-label experience-label">Experience</p>
+                <h2>Work History</h2>
+            </div>
+
+            <div class="resume-entry-list">
+                <article class="resume-entry">
+                    <div class="resume-entry-heading">
+                        <h3>Operations Supervisor</h3>
+                        <p>Kohl’s</p>
+                    </div>
+                    <p>
+                        Managed store operations across shipping, receiving, and inventory, ensuring accurate fulfillment and efficient ship-from-store workflows.
+                    </p>
+                </article>
+
+                <article class="resume-entry">
+                    <div class="resume-entry-heading">
+                        <h3>Back of House Supervisor</h3>
+                        <p>Toys “R” Us</p>
+                    </div>
+                    <p>
+                        Oversaw receiving, inventory organization, and stock flow, working closely with sales teams to maintain product availability and efficient store operations.
+                    </p>
+                </article>
+
+                <article class="resume-entry">
+                    <div class="resume-entry-heading">
+                        <h3>25B Information Technology Specialist</h3>
+                        <p>U.S. Army</p>
+                    </div>
+                    <p>
+                        Trained to install and maintain computer systems and network equipment, troubleshooting hardware, software, and network issues.
+                    </p>
+                </article>
+            </div>
+        </section>
+
+        <!-- Featured Projects -->
+        <section class="resume-section resume-projects fade-in delay-3">
+            <div class="section-heading">
+                <p class="section-label projects-label">Selected Work</p>
+                <h2>Featured Projects</h2>
+            </div>
+
+            <div class="resume-project-list">
+                <article class="resume-project-item">
+                    <h3>Kitchen Today</h3>
+                    <p>Built a full-stack meal planning and pantry management app using Blazor WebAssembly, .NET APIs, and Azure SQL, focused on real-time usability, clean UI, and practical everyday use.</p>
+                </article>
+
+                <article class="resume-project-item">
+                    <h3>Stella’sHairStudio.com</h3>
+                    <p>Designed and deployed a responsive business website with a custom booking workflow, focusing on usability, performance, and a polished client-facing experience.</p>
+                </article>
+
+                <article class="resume-project-item">
+                    <h3>DavPadDev.com</h3>
+                    <p>Developed and deployed a personal portfolio site using Blazor WebAssembly and Azure Static Web Apps to showcase projects, design approach, and real-world development work.</p>
+                </article>
+            </div>
+
+            <div class="resume-inline-link">
+                <a href="/projects">See full project case studies</a>
+            </div>
+        </section>
+
+        <!-- PDF CTA -->
+        <section class="resume-section resume-pdf fade-in delay-3">
+            <div class="section-heading">
+                <p class="section-label pdf-label">Resume PDF</p>
+                <h2>Prefer the traditional format?</h2>
+            </div>
+
+            <p>
+                Open the full PDF version in a new tab or download it directly.
+            </p>
+
+            <div class="resume-hero-actions">
+                <a class="resume-button resume-button-primary"
+                   href="resume/David_Padilla_Resume.pdf"
+                   target="_blank"
+                   rel="noopener">
+                    Open PDF
+                </a>
+
+                <a class="resume-button resume-button-secondary"
+                   href="resume/David_Padilla_Resume.pdf"
+                   download>
+                    Download PDF
+                </a>
+            </div>
+        </section>
+
+    </div>
+</div>
